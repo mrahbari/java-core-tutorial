@@ -5,33 +5,55 @@ package varargs;
  */
 public class VarargsExample {
 
-    public void displayData(String... values) {
+    // Method which has string vararg parameter
+    public void displayData(String ... values){
         System.out.println("Number of arguments passed " + values.length);
-        for (String s : values) {
+        for(String s : values){
             System.out.println(s + " ");
+        }
+    }
+
+    // Method which has int vararg parameter
+    public void displayData(int ... values){
+        System.out.println("Number of arguments passed " + values.length);
+        for(int i : values){
+            System.out.println(i + " ");
+        }
+    }
+
+    // Method with int vararg and one more string parameter
+    public void displayData(String a, int ... values){
+        System.out.println(" a " + a);
+        System.out.println("Number of arguments passed " + values.length);
+        for(int i : values){
+            System.out.println(i + " ");
         }
     }
 
     public static void main(String[] args) {
         VarargsExample vObj = new VarargsExample();
-        // four args
+        // four string args
         vObj.displayData("var", "args", "are", "passed");
-        //three args
-        vObj.displayData("Three", "args", "passed");
-        // no-arg
-        vObj.displayData();
+
+        // two int args
+        vObj.displayData(10, 20);
+
+        // One String param and two int args
+        vObj.displayData("Test", 20, 30);
     }
 
     /*Output
-
     Number of arguments passed 4
-    var
-            args
-    are
-            passed
-    Number of arguments passed 3
-    Three
-            args
-    passed
-    Number of arguments passed 0*/
+        var
+        args
+        are
+        passed
+    Number of arguments passed 2
+        10
+        20
+        a Test
+    Number of arguments passed 2
+        20
+        30
+    */
 }
